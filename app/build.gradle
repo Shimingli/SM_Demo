@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.shiming.hement"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // rxpermissions 
+    implementation "com.github.tbruyelle:rxpermissions:0.10.2"
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    api project(':network')
+    api project(':imageloader')
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    api 'com.sunmi:DS_Lib:1.0.16'
+//    implementation 'com.flipboard:bottomsheet-core:1.5.3'
+
+}
+repositories {
+    mavenCentral()
+}

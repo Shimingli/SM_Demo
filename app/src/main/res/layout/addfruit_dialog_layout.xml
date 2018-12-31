@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+
+    <RelativeLayout
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:background="@drawable/pay_dialog_bg">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/apple_dialog" />
+
+        <TextView
+            android:id="@+id/tv_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/tips_fruit_apple"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_des"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="18.66dp"
+            android:alpha="0.5"
+            android:text="规格"
+            android:textColor="#000000"
+            android:textSize="13.33sp" />
+
+
+        <LinearLayout
+            android:layout_below="@id/tv"
+            android:id="@+id/ll_guige"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/quality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_guige"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:alpha="1"
+            android:text="加冰"
+            android:textColor="#000000"
+            android:textSize="13.33sp" />
+
+        <LinearLayout
+            android:layout_below="@id/quality"
+            android:id="@+id/ll_bing"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:alpha="1"
+            android:layout_below="@id/ll_bing"
+            android:layout_marginStart="37.33dp"
+            android:layout_marginEnd="37.33dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/addfruit_line"
+            android:layerType="software" />
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:background="@drawable/pay_dialog_button_bg"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_cancel"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:alpha="0.6"
+                android:background="@null"
+                android:text="@string/tips_cancel"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#CEDADD" />
+
+            <Button
+                android:id="@+id/btn_add"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:alpha="0.6"
+                android:background="@null"
+                android:text="@string/fruit_add"
+                android:textColor="#FC5346"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
