@@ -33,6 +33,11 @@ dependencies {
     api 'com.sunmi:DS_Lib:1.0.16'
 //    implementation 'com.flipboard:bottomsheet-core:1.5.3'
 
+    //gson json工具类 google解析Json的库
+    api 'com.google.code.gson:gson:2.8.2'
+    //Zxing核心包
+    api 'com.google.zxing:core:3.3.0'
+
 }
 repositories {
     mavenCentral()

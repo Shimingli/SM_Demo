@@ -12,6 +12,7 @@ import com.shiming.hement.R;
 import com.shiming.shangmi.data.model.MenuBean;
 import com.shiming.shangmi.utils.BitmapUtils;
 import com.shiming.shangmi.utils.ResourcesUtils;
+import com.shiming.shangmi.utils.RxBarCode;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -106,6 +107,21 @@ public class PrinterPresenter {
             }
             printerService.printBitmap(bitmap, null);
             printerService.printText("\n\n", null);
+
+            //条形码
+            printerService.setAlignment(0, null);
+            Bitmap code = RxBarCode.builder("530069385356582912").
+                    codeColor(0xFF000000).
+                    codeWidth(530).
+                    codeHeight(150).
+                    into(null);
+            printerService.printBitmap(code, null);
+            printerService.printText("\n\n", null);
+            printerService.setAlignment(1, null);
+            printerService.printTextWithFont("530069385356582912", "", fontsizeContent, null);
+            printerService.printText("\n\n", null);
+
+
             //公众号二维码
             printerService.setAlignment(1, null);
             // TODO: 2019/1/2   生成一个条形码
