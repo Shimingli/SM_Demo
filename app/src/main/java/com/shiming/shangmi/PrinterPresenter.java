@@ -108,6 +108,7 @@ public class PrinterPresenter {
             printerService.printText("\n\n", null);
             //公众号二维码
             printerService.setAlignment(1, null);
+            // TODO: 2019/1/2   生成一个条形码
             Bitmap wechat = BitmapFactory.decodeResource(context.getResources(), R.mipmap.qrcode_for_gh);
             //
             Timber.tag("PrinterPresenter").i("微信公众号的宽度 =%d", wechat.getWidth());

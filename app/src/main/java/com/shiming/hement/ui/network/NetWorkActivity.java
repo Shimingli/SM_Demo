@@ -1,5 +1,10 @@
 package com.shiming.hement.ui.network;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +25,8 @@ import com.shiming.hement.data.DataManager;
 import com.shiming.hement.data.model.TodayBean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import timber.log.Timber;
 
 
@@ -53,6 +60,27 @@ public class NetWorkActivity extends BaseActivity implements NetWorkView, View.O
         mMainPresenter.attachView(this);
         initView();
         initListener();
+//        UsbDevice device = (UsbDevice) getIntent().getParcelableExtra(UsbManager.EXTRA_DEVICE);
+//
+//        UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
+//        HashMap<String, UsbDevice> deviceList = manager.getDeviceList();
+//        UsbDevice device = deviceList.get("deviceName");
+
+        BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+
+                if (UsbManager.ACTION_USB_DEVICE_DETACHED.equals(action)) {
+                    UsbDevice device = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+                    if (device != null) {
+                        // call your method that cleans up and closes communication with the device
+                        String s = device.toString();
+                        System.out.println("NetWorkActivity  :"+s);
+                    }
+                }
+            }
+        };
+
     }
     private void initView() {
         mBtn = (Button) findViewById(R.id.btn);

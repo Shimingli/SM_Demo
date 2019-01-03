@@ -18,7 +18,8 @@
     <!-- 在 屏幕最顶部显示addview -->
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
-
+    <uses-feature android:name="android.hardware.usb.host" />
+    <uses-sdk android:minSdkVersion="12" />
 
 
 
@@ -37,7 +38,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.network.NetWorkActivity"/>
+        <activity android:name=".ui.network.NetWorkActivity">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
         <activity android:name=".ui.sp.SPreferencesActivity"/>
         <activity android:name=".ui.db.DBNetWorkDemoActivity"/>
         <activity android:name=".ui.rxbusdemo.RxEventBusActivity"/>
