@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.SystemClock;
 
@@ -23,6 +24,7 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
+import woyou.aidlservice.jiuiv5.ICallback;
 import woyou.aidlservice.jiuiv5.IWoyouService;
 
 /**
@@ -120,6 +122,18 @@ public class PrinterPresenter {
             printerService.setAlignment(1, null);
             printerService.printTextWithFont("530069385356582912", "", fontsizeContent, null);
             printerService.printText("\n\n", null);
+
+            //条码高度, 取值1到255, 默认162  条码宽度, 取值2至6, 默认2
+            printerService.printBarCode("530069385356582912", 8, 255, 6, 0,null);
+            printerService.printTextWithFont("530069385356582912", "", fontsizeContent, null);
+            printerService.printText("\n\n", null);
+
+            printerService.printBarCode("530069385356582912", 8, 255, 6, 1,null);
+
+            printerService.printBarCode("530069385356582912", 8, 255, 6, 3,null);
+
+            printerService.printQRCode("https://www.baidu.com/s?wd=把代码开源&rsv_spt=1&rsv_iqid=0x989521a40000606d&",5,3,null);
+
 
 
             //公众号二维码
