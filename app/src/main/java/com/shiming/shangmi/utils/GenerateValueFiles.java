@@ -1,5 +1,8 @@
 package com.shiming.shangmi.utils;
 
+import android.content.Context;
+import android.util.Log;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -94,10 +97,13 @@ class GenerateValueFiles {
 
     private void generateXmlFile(int w, int h) {
 
+
+
         StringBuffer sbForWidth = new StringBuffer();
         sbForWidth.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
         sbForWidth.append("<resources>");
         float cellw = w * 1.0f / baseW;
+
 
         System.out.println("width : " + w + "," + baseW + "," + cellw);
         for (int i = 1; i < baseW; i++) {
@@ -139,8 +145,45 @@ class GenerateValueFiles {
             e.printStackTrace();
         }
     }
+    /**
+     * 显示器的逻辑密度，这是【独立的像素密度单位（首先明白dip是个单位）】的一个缩放因子，
+     * 在屏幕密度大约为160dpi的屏幕上，一个dip等于一个px,这个提供了系统显示器的一个基线（这句我实在翻译不了）。
+     * 例如：屏幕为240*320的手机屏幕，其尺寸为 1.5"*2"  也就是1.5英寸乘2英寸的屏幕
+     * 它的dpi（屏幕像素密度，也就是每英寸的像素数，dpi是dot per inch的缩写）大约就为160dpi，
+     * 所以在这个手机上dp和px的长度（可以说是长度，最起码从你的视觉感官上来说是这样的）是相等的。
+     * 因此在一个屏幕密度为160dpi的手机屏幕上density的值为1，而在120dpi的手机上为0.75等等
+     * （这里有一句话没翻译，实在读不通顺，不过通过下面的举例应该能看懂）
+     * 例如：一个240*320的屏幕尽管他的屏幕尺寸为1.8"*1.3",（我算了下这个的dpi大约为180dpi多点）
+     * 但是它的density还是1(也就是说取了近似值)
+     * 然而，如果屏幕分辨率增加到320*480 但是屏幕尺寸仍然保持1.5"*2" 的时候（和最开始的例子比较）
+     * 这个手机的density将会增加（可能会增加到1.5）
+     */
+    public static int px2dp(Context context, float pxValue) {
+        // E/@@@: 230  1.4375    dpi      1920  1011
+//        Log.e("@@@", dm.densityDpi + "  " + dm.density);
 
+        //商米系统上为 1.4375
+        final float scale =  context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static float change(float a) {
+//        int temp = (int) (a * 100);
+        float temp = (float) (a/1.4375+0.5);
+        return temp;
+    }
+
+    /**
+     * 这种方式 废弃掉
+     * @param a
+     * @return
+     */
+    public static float changeOld(float a) {
         int temp = (int) (a * 100);
         return temp / 100f;
     }
